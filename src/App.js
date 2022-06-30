@@ -1,30 +1,19 @@
-import logo from './logo.svg';
-import { useEffect, useState } from 'react';
-import Card from './Card';
-import Products from './Products';
 
+import Home from './pages/Home';
+import { Details } from './pages/Details';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 function App() {
-  const [products, setProducts] = useState([]);
-  async function getProducts() {
-    await fetch('https://pg-delsur.herokuapp.com/products')
-      .then(response => response.json())
-      .then((data) => {
-        console.log(data);
-        setProducts(data.products);
-      })
-      .catch(error => console.log('Hubo un problema con la petición Fetch:' + error.message));
-  }
-
-  useEffect(()=> {
-    getProducts();
-  }, []);
-
-
 
   return (
-         <Products products={products}></Products>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Home />} path='/' ></Route>
+        <Route element={<Details />} path='/details'></Route>
+      </Routes>
+    </BrowserRouter>
+         
   );
 }
 
