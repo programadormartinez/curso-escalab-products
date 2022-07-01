@@ -1,7 +1,14 @@
-import React from 'react'
-
+import { useParams } from 'react-router-dom';
+import { Navbar } from '../components/Navbar'
+import { Product } from '../components/Product'
 export const Details = () => {
+  let { id } = useParams();
   return (
-    <div>Details</div>
+    <div>
+      <Navbar></Navbar>
+      <Product id={id}></Product>
+    </div>
   )
 }
+
+
